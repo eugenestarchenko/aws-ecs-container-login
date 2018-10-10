@@ -22,6 +22,7 @@ show_help () {
 }
 
 OPTIND=1
+## Need to add ability to list & choose ecs clusters
 CLUSTER="your_ecs_cluster_name"
 USE_PRIVATE=1
 SSH_USER="ec2-user"
@@ -58,9 +59,6 @@ SERVICE_ARN=`\
   aws ecs list-services --cluster "$CLUSTER" --output json | \
   jq -r '.serviceArns | join("\n")' | \
   $PECO`
-
-# SERVICE_ARN is in ARN format. However, list-tasks takes service name.
-# Does it take service ARN as well?
 
 TASK_ARN=`\
   aws ecs list-tasks --cluster "$CLUSTER" --service-name "$SERVICE_ARN" --output json | \
