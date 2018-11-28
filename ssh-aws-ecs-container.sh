@@ -23,6 +23,7 @@ show_help () {
 
 OPTIND=1
 ## Need to add ability to list & choose ecs clusters
+## Need to add ability to check if there is no service - lists only tasks
 CLUSTER="your_ecs_cluster_name"
 USE_PRIVATE=1
 SSH_USER="ec2-user"
