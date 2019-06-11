@@ -16,3 +16,5 @@
 * [jq](https://stedolan.github.io/jq/)
 * [peco](https://github.com/peco/peco)
 
+## TODO
+Add support for aws session manager to allow us to connect into an instance and get a shell session through the usage of HTTPS TLS1.2/ port 443, without having to use SSH keys
