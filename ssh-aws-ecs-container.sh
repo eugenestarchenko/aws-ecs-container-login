@@ -62,7 +62,7 @@ SERVICE_ARN=`\
   $PECO`
 
 TASK_ARN=`\
-  aws ecs list-tasks --cluster "$CLUSTER" --service-name "$SERVICE_ARN" --output json | \
+  aws ecs list-tasks --cluster "$CLUSTER" --service-name "$SERVICE_ARN" --max-items 100 --output json | \
   jq -r '.taskArns | join("\n")' | \
   $PECO`
 
