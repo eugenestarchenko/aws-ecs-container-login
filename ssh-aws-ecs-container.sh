@@ -22,12 +22,8 @@ show_help () {
 }
 
 OPTIND=1
-## Need to add ability to list & choose ecs clusters
-## Need to add ability to check if there is no service - lists only tasks
-CLUSTER="your_ecs_cluster_name"
 USE_PRIVATE=1
 SSH_USER="ec2-user"
-SSH_KEY="~/.ssh/your_ecs_cluster_private_key.id_rsa"
 
 while getopts "hpc:u:" opt; do
   case "$opt" in
@@ -55,6 +51,15 @@ REMOTE_CMD=$@
 
 : ${PECO_CONFIG:=`dirname $0`/peco_config.json}
 PECO="peco --rcfile=${PECO_CONFIG}"
+
+SSH_KEY=`\
+  find ~/.ssh -type f -maxdepth 1 | \
+  $PECO`
+
+CLUSTER=`\
+  aws ecs list-clusters --output json | \
+  jq -r '.clusterArns | join("\n")' | \
+  $PECO`
 
 SERVICE_ARN=`\
   aws ecs list-services --cluster "$CLUSTER" --output json | \
