@@ -3,10 +3,13 @@
 ## Usage
 
 1. `sh ./ssh-aws-ecs-container.sh`
-2. Pick the ecs service
-3. Pick the ecs task within the ecs service
-4. Pick the container name within the ecs task (if there is more than one container defined)
-5. aws-ecs-container-login will exec bash inside that container
+2. Pick the SSH key
+3. Pick the ecs cluster
+4. Pick the ecs service
+5. Pick the ecs task within the ecs service
+6. Pick the container name within the ecs task (if there is more than one container defined)
+7. aws-ecs-container-login will exec bash inside that container
+8. DEBUG from within the container
 
 ## Requirements
 
